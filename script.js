@@ -1,24 +1,20 @@
-document.addEventListener('DOMContentLoaded', function() {
-  let bandNames = ['The Beatles', 'Led Zeppelin', 'Pink Floyd', 'The Rolling Stones', 'Aerosmith'];
+// Array of band names
+let bandNames = ['The Beatles', 'Pink Floyd', 'Led Zeppelin', 'The Rolling Stones', 'Radiohead'];
 
-  // Sort the band names in lexicographic order excluding articles
-  bandNames.sort(function(a, b) {
-    return removeArticles(a) > removeArticles(b) ? 1 : -1;
-  });
+// Function to remove articles from band names
+function removeArticles(name) {
+  return name.replace(/^(a |an |the )/i, '').trim();
+}
 
-  // Get the <ul> element with id "bands"
-  let ulElement = document.querySelector('#bands');
+// Sort the band names without articles
+let sortedBands = bandNames.sort((a, b) => removeArticles(a) > removeArticles(b) ? 1 : -1);
 
-  // Create and append <li> elements for each band name
-  bandNames.forEach(function(bandName) {
-    let liElement = document.createElement('li');
-    let bandText = document.createTextNode(bandName);
-    liElement.appendChild(bandText);
-    ulElement.appendChild(liElement);
-  });
+// Get the ul element
+let ulElement = document.querySelector('#bands');
 
-  // Function to remove articles from the band name
-  function removeArticles(bandName) {
-    return bandName.replace(/^(a|an|the)\s+/i, '');
-  }
+// Create li elements and append them to the ul element
+sortedBands.forEach(band => {
+  let liElement = document.createElement('li');
+  liElement.textContent = band;
+  ulElement.appendChild(liElement);
 });
