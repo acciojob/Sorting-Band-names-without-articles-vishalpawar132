@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function() {
   let bandNames = ['The Beatles', 'Led Zeppelin', 'Pink Floyd', 'The Rolling Stones', 'Aerosmith'];
 
